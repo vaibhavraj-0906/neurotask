@@ -46,22 +46,22 @@ export const TaskInput = ({ onSubmit, isLoading, placeholder = "Type a task natu
             placeholder={placeholder}
             rows="2"
             disabled={isLoading}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
         </div>
         <button
           onClick={handleSubmit}
           disabled={isLoading || !input.trim()}
-          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 transition-colors font-medium"
+          className="px-6 py-3 bg-blue-600 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 disabled:bg-gray-400 dark:disabled:bg-gray-600 transition-colors font-medium"
         >
           {isLoading ? 'Creating...' : 'Add Task'}
         </button>
       </div>
       
       {showPreview && preview && (
-        <div className="mt-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <h4 className="font-semibold text-blue-900 mb-2">📋 Task Preview</h4>
-          <div className="text-sm space-y-1">
+        <div className="mt-3 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg">
+          <h4 className="font-semibold text-blue-900 dark:text-blue-300 mb-2">📋 Task Preview</h4>
+          <div className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
             <p><span className="font-medium">Task:</span> {preview.task_title}</p>
             {preview.deadline && <p><span className="font-medium">Due:</span> {preview.deadline}</p>}
             {preview.priority && <p><span className="font-medium">Priority:</span> {preview.priority}</p>}

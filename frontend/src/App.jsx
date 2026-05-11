@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTasks } from './hooks/useTasks'
 import { useNotifications } from './hooks/useNotifications'
+import { useDarkMode } from './hooks/useDarkMode'
 import { calculateStats, getUniqueCategories } from './utils'
 import { TaskInput, TaskList, TaskFilters, Header, Sidebar } from './components'
 import './styles/global.css'
@@ -12,6 +13,7 @@ function App() {
   // State management
   const { tasks, loading, error, fetchTasks, createTask, completeTask, deleteTask } = useTasks()
   const { getDueReminders } = useNotifications()
+  const { isDark, toggleDarkMode } = useDarkMode()
   const [filters, setFilters] = useState({})
   const [currentView, setCurrentView] = useState('all')
   const [filteredTasks, setFilteredTasks] = useState([])
@@ -122,7 +124,7 @@ function App() {
   const categories = getUniqueCategories(tasks)
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
       {/* Sidebar */}
       <Sidebar
         stats={stats}
@@ -137,7 +139,7 @@ function App() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <Header taskCount={tasks.length} completedCount={stats.completed || 0} />
+        <Header taskCount={tasks.length} completedCount={stats.completed || 0} isDark={isDark} onToggleDarkMode={toggleDarkMode} />
 
         {/* Content Area */}
         <div className="flex-1 overflow-auto p-6">
@@ -153,7 +155,7 @@ function App() {
 
             {/* Error Display */}
             {error && (
-              <div className="mb-4 p-4 bg-red-100 border border-red-300 rounded-lg text-red-700">
+              <div className="mb-4 p-4 bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-lg text-red-700 dark:text-red-300">
                 ⚠️ {error}
               </div>
             )}
@@ -168,7 +170,7 @@ function App() {
             )}
 
             {/* Task List */}
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-lg p-6">
               <TaskList
                 tasks={filteredTasks}
                 onComplete={handleCompleteTask}

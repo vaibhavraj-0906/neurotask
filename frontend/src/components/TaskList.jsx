@@ -7,8 +7,8 @@ export const TaskList = ({ tasks, onComplete, onDelete, onEdit, emptyMessage = "
   if (!tasks || tasks.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500 text-lg">{emptyMessage}</p>
-        <p className="text-gray-400 text-sm mt-2">✨ Try typing something like: "Finish assignment tomorrow at 8pm"</p>
+        <p className="text-gray-500 dark:text-gray-400 text-lg">{emptyMessage}</p>
+        <p className="text-gray-400 dark:text-gray-500 text-sm mt-2">✨ Try typing something like: "Finish assignment tomorrow at 8pm"</p>
       </div>
     )
   }

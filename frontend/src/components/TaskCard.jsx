@@ -16,11 +16,11 @@ export const TaskCard = ({ task, onComplete, onDelete, onEdit }) => {
 
   const getPriorityCategoryColor = (priority) => {
     const colors = {
-      high: 'bg-red-50',
-      medium: 'bg-amber-50',
-      low: 'bg-blue-50'
+      high: 'bg-red-50 dark:bg-red-900/20',
+      medium: 'bg-amber-50 dark:bg-amber-900/20',
+      low: 'bg-blue-50 dark:bg-blue-900/20'
     }
-    return colors[priority] || 'bg-gray-50'
+    return colors[priority] || 'bg-gray-50 dark:bg-gray-800'
   }
 
   const formatDate = (dateString) => {
@@ -50,30 +50,30 @@ export const TaskCard = ({ task, onComplete, onDelete, onEdit }) => {
               className="w-5 h-5 rounded"
             />
             <div className="flex-1">
-              <h3 className={`text-lg font-semibold ${task.completed ? 'line-through text-gray-400' : 'text-gray-800'}`}>
+              <h3 className={`text-lg font-semibold ${task.completed ? 'line-through text-gray-400 dark:text-gray-600' : 'text-gray-800 dark:text-gray-100'}`}>
                 {task.title}
               </h3>
               {task.description && (
-                <p className="text-sm text-gray-600 mt-1">{task.description}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{task.description}</p>
               )}
             </div>
           </div>
           
           <div className="flex flex-wrap gap-4 mt-3 ml-8 text-xs">
             {task.deadline && (
-              <div className="flex items-center gap-1 text-gray-600">
+              <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
                 <span className="font-medium">📅</span>
                 {formatDate(task.deadline)}
               </div>
             )}
             {task.category && (
-              <div className="flex items-center gap-1 text-gray-600">
+              <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
                 <span className="font-medium">🏷️</span>
                 {task.category}
               </div>
             )}
             {task.recurrence && (
-              <div className="flex items-center gap-1 text-gray-600">
+              <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400">
                 <span className="font-medium">🔄</span>
                 {task.recurrence}
               </div>
@@ -84,14 +84,14 @@ export const TaskCard = ({ task, onComplete, onDelete, onEdit }) => {
         <div className="flex gap-2 ml-4">
           <button
             onClick={() => onEdit(task.id)}
-            className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
             title="Edit task"
           >
             ✏️
           </button>
           <button
             onClick={() => onDelete(task.id)}
-            className="p-2 hover:bg-red-100 rounded-lg transition-colors"
+            className="p-2 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-lg transition-colors"
             title="Delete task"
           >
             🗑️

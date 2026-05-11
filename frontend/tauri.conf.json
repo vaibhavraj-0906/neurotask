@@ -1,0 +1,47 @@
+{
+  "build": {
+    "frontendDist": "../frontend/dist",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:5173",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "NeuroTask",
+    "version": "1.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "notification": {
+        "all": true
+      },
+      "shell": {
+        "all": false,
+        "execute": true,
+        "open": true
+      },
+      "window": {
+        "all": false,
+        "minimize": true,
+        "maximize": true,
+        "close": true,
+        "setAlwaysOnTop": true
+      }
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 900,
+        "resizable": true,
+        "title": "NeuroTask",
+        "width": 1200,
+        "minHeight": 500,
+        "minWidth": 800
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  }
+}
